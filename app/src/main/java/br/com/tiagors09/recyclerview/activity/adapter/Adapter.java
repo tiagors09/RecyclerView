@@ -8,12 +8,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 import br.com.tiagors09.recyclerview.R;
+import br.com.tiagors09.recyclerview.activity.model.Filme;
 
 // Criei um adapter Adapter que extende Adapter
 // que é uma classe interna de RecyclerView e ela necessita que um tipo genérico
 // que é o Adapter.MyViewHolder que foi criado internamente em Adapter
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
+    private List<Filme> listaFilmes;
+
+    public Adapter(List<Filme> lista) {
+        this.listaFilmes = lista;
+    }
+
     // Chamado para criar as vizualizações
     @NonNull
     @Override
@@ -34,15 +43,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     // pode pegar os dados de uma lista
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.titulo.setText("Titulo de teste");
-        holder.genero.setText("Gereno de teste");
-        holder.ano.setText("Ano teste");
+        Filme filme = listaFilmes.get(position);
+
+        holder.titulo.setText(filme.getTituloFilme());
+        holder.genero.setText(filme.getGenero());
+        holder.ano.setText(filme.getAno());
     }
 
     // número de items que vão ser exibidos
     @Override
     public int getItemCount() {
-        return 5;
+        return listaFilmes.size();
     }
 
     // Classe interna que é o Holder do adapter

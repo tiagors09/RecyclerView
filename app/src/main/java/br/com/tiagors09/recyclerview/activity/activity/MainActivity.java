@@ -1,10 +1,12 @@
 package br.com.tiagors09.recyclerview.activity.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         this.criarFilmes();
 
         // Configurar adapter
-        Adapter adapter = new Adapter();
+        Adapter adapter = new Adapter(filmes);
 
         // Configurar RecyclerView
         // Criando LayoutManager
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         // Define verdadeiro para um tamanho fixo de itens que irão aparecer na RecyclerView
         recyclerView.setHasFixedSize(true);
+        // Configurando um divider
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayout.VERTICAL));
         // Settando adapter
         recyclerView.setAdapter(adapter);
     }
