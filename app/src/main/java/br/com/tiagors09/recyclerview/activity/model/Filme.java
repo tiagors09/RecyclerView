@@ -37,4 +37,13 @@ public class Filme {
     public void setAno(String ano) {
         this.ano = ano;
     }
+
+    @Override
+    public String toString() {
+        return "Filme{" +
+                "tituloFilme='" + tituloFilme + '\'' +
+                ", genero='" + genero + '\'' +
+                ", ano='" + ano + '\'' +
+                '}';
+    }
 }
